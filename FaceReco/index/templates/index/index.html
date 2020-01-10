@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>REco</title>
+</head>
+
+<body>
+    <form method="POST" enctype="multipart/form-data" action="/accounts/signup/" class="signup" id="signup_form">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type='submit' value="OK">
+    </form>
+</body>
+
+</html>
