@@ -23,8 +23,10 @@ class VideoCamera(object):
         face_names = []
         process_this_frame = True
         if process_this_frame:
-            face_locations = face_recognition.face_locations(rgb_image, model="cnn")
+            face_locations = face_recognition.face_locations(rgb_image)
             face_encodings = face_recognition.face_encodings(rgb_image, face_locations)
+            print("face",face_encodings)
+            print("known",known_face_encodings)
             face_names = []
             for face_encoding in face_encodings:
                 matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
@@ -34,11 +36,11 @@ class VideoCamera(object):
                 if matches[best_match_index]:
                     name = known_face_names[best_match_index]
                 face_names.append(name)
-                for users in UserProfile.objects.all():
-                    if users.user.first_name+users.user.last_name == name and users.route[len(users.route)-1] != "first":
-                        users.route.append("first")
-                        users.save()
-                        print("sss")
+                #for users in UserProfile.objects.all():
+                #    if users.user.first_name+users.user.last_name == name and users.route[len(users.route)-1] != "first":
+                #        users.route.append("first")
+                #        users.save()
+                #        print("sss")
         process_this_frame = not process_this_frame
         for (top, right, bottom, left), name in zip(face_locations, face_names):
             top *= 1

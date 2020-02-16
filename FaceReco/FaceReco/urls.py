@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.http import StreamingHttpResponse
 from django.urls import path, include
 from camera import VideoCamera, gen, VideoCamera2
+from rest_framework.authtoken import views as authviews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +27,6 @@ urlpatterns = [
     path('monitor2/', lambda r: StreamingHttpResponse(gen(VideoCamera2()),
                                                      content_type='multipart/x-mixed-replace; boundary=frame')),                                               
     path('accounts/', include('allauth.urls')),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api-token-auth/', authviews.obtain_auth_token),
 ]

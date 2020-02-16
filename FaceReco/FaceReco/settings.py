@@ -25,7 +25,7 @@ SECRET_KEY = 'a0(##_6i6fmehq8z5(&e@r^s7#@c(um0pb4layqw*$_sq@_^$x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '192.168.0.10']
+ALLOWED_HOSTS = ['127.0.0.1', '192.168.0.102']
 
 
 # Application definition
@@ -86,7 +86,7 @@ DATABASES = {
         'NAME': 'face_reco',
         'USER': 'zhora',
         'PASSWORD': 'root',
-        'HOST': '192.168.0.10',
+        'HOST': 'localhost',
         'PORT': '5432'
     }
 }
